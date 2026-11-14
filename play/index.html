@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6761764965">
+<meta name="robots" content="noindex">
+<title>Play CoreShift with a friend</title>
+<style>
+  :root { color-scheme: light dark; --bg:#f2f2f7; --card:#fff; --text:#111; --sub:#5c5c63; --btn:#111; --btn-text:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c0c0e; --card:#151518; --text:#fff; --sub:#a8a8b0; --btn:#fff; --btn-text:#0c0c0e; } }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--text);
+         font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif; padding:24px; box-sizing:border-box; }
+  main { max-width:380px; width:100%; background:var(--card); border-radius:28px; padding:28px 24px; text-align:center; }
+  h1 { font-size:26px; margin:0 0 8px; letter-spacing:-0.01em; }
+  p { font-size:16px; line-height:22px; color:var(--sub); margin:0 0 16px; }
+  .btn { display:flex; align-items:center; justify-content:center; height:52px; border-radius:16px; background:var(--btn); color:var(--btn-text);
+         font-size:17px; font-weight:600; text-decoration:none; }
+  #expiry { font-size:14px; }
+  #expiry.expired { color:#d92d20; font-weight:600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Play CoreShift with a friend</h1>
+  <p>A friend invited you to a CoreShift match. If CoreShift is installed, this link opens it. If not, get it from the App Store, then open this link again.</p>
+  <a class="btn" href="https://apps.apple.com/hu/app/coreshift-abstract-strategy/id6761764965">Get CoreShift on the App Store</a>
+  <p id="expiry" style="margin-top:16px">This invite is valid for 24 hours.</p>
+</main>
+<script>
+  (function () {
+    var e = parseInt(new URLSearchParams(location.search).get('e'), 10);
+    var el = document.getElementById('expiry');
+    if (!e) return;
+    var when = new Date(e * 1000);
+    if (Date.now() > when.getTime()) {
+      el.textContent = 'This invite has expired. Ask your friend for a new link.';
+      el.className = 'expired';
+    } else {
+      el.textContent = 'This invite expires ' + when.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) + '.';
+    }
+  })();
+</script>
+</body>
+</html>
