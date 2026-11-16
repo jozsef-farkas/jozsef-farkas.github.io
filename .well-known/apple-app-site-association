@@ -5,8 +5,8 @@
       {
         "appID": "GFJ9Q4F82Z.com.jozsef.coreshift",
         "appIDs": ["GFJ9Q4F82Z.com.jozsef.coreshift"],
-        "paths": ["/play/*"],
-        "components": [{ "/": "/play/*" }]
+        "paths": ["/play/*", "/cup/*"],
+        "components": [{ "/": "/play/*" }, { "/": "/cup/*" }]
       }
     ]
   }
